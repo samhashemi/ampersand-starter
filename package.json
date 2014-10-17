@@ -1,0 +1,29 @@
+{
+  "name": "exampleapp",
+  "version": "0.1.0",
+  "dependencies": {
+    "ampersand-model": "^4.0.1",
+    "ampersand-router": "^1.0.2",
+    "ampersand-view": "^7.0.2",
+    "backbone-events-standalone": "^0.2.2",
+    "browserify": "^5.11.0",
+    "domready": "^1.0.6",
+    "multiline": "^1.0.0",
+    "node-sass": "^0.9.3",
+    "uglify-js": "^2.4.15",
+    "underscore": "^1.7.0",
+  },
+  "devDependencies": {
+    "http-server": "^0.6.1",
+    "watchify": "^1.0.2"
+  },
+  "scripts": {
+    "watch-css": "node-sass styles/app.scss build/bundle.css --watch styles",
+    "watch-js": "watchify app/app.js -o build/bundle.js -dv",
+    "watch": "npm run watch-css & npm run watch-js",
+    "build-css": "node-sass styles/app.scss build/bundle.css --output-style compressed",
+    "build-js": "browserify app/app.js | uglifyjs -c --comments > build/bundle.js",
+    "build": "npm run build-css && npm run build-js",
+    "start": "npm run watch & http-server"
+  }
+}
